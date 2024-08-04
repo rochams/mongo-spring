@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masaro.springmongo.domain.User;
+import com.masaro.springmongo.dto.UserDTO;
 import com.masaro.springmongo.repository.UserRepository;
 import com.masaro.springmongo.services.exception.NotFoundException;
 
@@ -30,6 +31,11 @@ public class UserService {
 		}
 		
 		return user;
+	}
+	
+	public User insert(User obj) {
+		
+		return userRepository.insert(obj);
 	}
 
 }

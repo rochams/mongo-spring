@@ -19,7 +19,7 @@ public class GetExceptionHandle {
 		DefaultError defaultError = new DefaultError(
 				System.currentTimeMillis(), 
 				status.value(), 
-				"Not found.", 
+				"Object Not Found.", 
 				e.getMessage(), 
 				request.getRequestURI());
 		return ResponseEntity.status(status).body(defaultError);
