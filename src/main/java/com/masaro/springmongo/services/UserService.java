@@ -19,9 +19,7 @@ public class UserService {
 	
 	
 	public List<User> findAll() {
-		
 		return userRepository.findAll();
-		
 	}
 	
 	
@@ -39,17 +37,11 @@ public class UserService {
 	}
 	
 	
-	public void update(User user) {
-		User newUser = this.findById(user.getId());
-		updateUser(user, newUser);
-	}
-	
-	
-	private void updateUser(User user, User newUser) {
-		newUser.setId(user.getId());
-		newUser.setName(user.getName());
-		newUser.setAddress(user.getAddress());
-		newUser.setEmail(user.getEmail());		
+	public User update(User user, UserDTO dto) {
+		user.setName(dto.name());
+		user.setEmail(dto.email());
+		user.setAddress(dto.address());
+		return userRepository.save(user);
 	}
 	
 
