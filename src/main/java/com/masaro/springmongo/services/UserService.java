@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masaro.springmongo.domain.Post;
 import com.masaro.springmongo.domain.User;
 import com.masaro.springmongo.dto.UserDTO;
 import com.masaro.springmongo.repository.UserRepository;
@@ -48,6 +49,12 @@ public class UserService {
 	public void delete(String id) {
 		User user = this.findById(id);
 		userRepository.deleteById(user.getId());
+	}
+	
+	
+	public List<Post> getPosts(String id){
+		User user = this.findById(id);
+		return user.getPosts();
 	}
 
 }

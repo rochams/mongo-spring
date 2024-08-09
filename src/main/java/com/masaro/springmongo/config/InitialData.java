@@ -40,6 +40,8 @@ public class InitialData implements CommandLineRunner {
 		Post p2= new Post(null, sdf.parse("08/08/2024"), "Novidades chegando...", "Trago novidades também para backend...", new AuthorDTO(u2));
 		postRepository.saveAll(Arrays.asList(p1, p2));
 		
+		u1.getPosts().addAll(Arrays.asList(p1, p2));
+		userRepository.save(u1);
 		
 	}
 
