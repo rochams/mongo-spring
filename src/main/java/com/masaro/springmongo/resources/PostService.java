@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masaro.springmongo.config.URL;
 import com.masaro.springmongo.domain.Post;
 import com.masaro.springmongo.repository.PostRepository;
 import com.masaro.springmongo.services.exception.NotFoundException;
@@ -29,7 +30,12 @@ public class PostService {
 	}
 	
 	public List<Post> findByTitle(String text){
+		text = URL.decoder(text);
 		return postRepository.findByTitleContainingIgnoreCase(text);
+	}
+	
+	public List<Post> findText(String text){
+		return postRepository.findText(text);
 	}
 
 }
